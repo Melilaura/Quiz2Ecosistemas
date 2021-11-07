@@ -16,7 +16,7 @@ const firebaseApp = initializeApp(firebaseAppConfig);
 function registrarEstudiante(nuevoEstudiante){
     //obtener base de datos
     const db = getDatabase();
-    const dbRef = (ref(db, "estudiantes/" + nuevoEstudiante.CODE));
+    const dbRef = (ref(db, "estudiantes/" + nuevoEstudiante.CODIGO));
     set(dbRef, nuevoEstudiante);
     //escribir un nuevo estudiante
 }
@@ -95,13 +95,14 @@ const guardar = (e, event) =>{
 
     registrarEstudiante(nuevoEstudiante);
 
-    //limpiar
+   /* //limpiar
     nombreEstudiante.value = '';
     codigoEstudiante.value = '';
-    cursoEstudiante.value = '';
+    cursoEstudiante.value = '';*/
 
     alert("Se registró al estudiante");
 }
 
-matricularButton.addEventListener("click", guardar);
 getEstudiante();
+matricularButton.addEventListener("click", guardar);
+

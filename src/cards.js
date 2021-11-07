@@ -14,23 +14,23 @@ export class cards{
         card.className = "card-student";
 
         //nombre del estudiante
-        let nombre = document.createElement("p");
-        nombre.className = "nombre-Card";
+        let nombre = document.createElement("h4");
+        nombre.className = "nombreCard";
         nombre.innerHTML = this.estudiante.NOMBRE;
 
         // codigo del estudiante
-        let codigo = document.createElement("p");
-        codigo.className = "codigo-Card";
+        let codigo = document.createElement("h5");
+        codigo.className = "codigoCard";
         codigo.innerHTML = this.estudiante.CODIGO;
         
         //curso
-        let curso = document.createElement("p");
-        curso.className = "curso-Card";
+        let curso = document.createElement("h5");
+        curso.className = "cursoCard";
         curso.innerHTML = this.estudiante.CURSO;
 
         //participacion
-        let participacion = document.createElement("p");
-        participacion.className = "participacion-Card";
+        let participacion = document.createElement("h5");
+        participacion.className = "participacionCard";
         participacion.innerHTML = this.estudiante.PARTICIPACION;
 
         //BOTONES//
@@ -39,7 +39,7 @@ export class cards{
         let eliminarButton = document.createElement("button");
 
         eliminarButton.className = "eliminarButton";
-        eliminarButton.innerHTML = "X";
+        eliminarButton.innerHTML = "x";
 
         eliminarButton.addEventListener("click", (e, ev) =>{
 
@@ -47,7 +47,7 @@ export class cards{
                         const eliminarRef = ref(db, 'estudiantes/' + this.estudiante.CODIGO);
                         
                         set(eliminarRef, null);
-                        console.log("se elimino un estudiante");
+                       console.log("se elimino un estudiante");
         })
 
 
@@ -57,20 +57,20 @@ export class cards{
         agregarButton.className = "agregarButton";
         agregarButton.innerHTML = "+";
 
-      let participacionPuntos = this.estudiante.PARTICIPACION
+   //let participacionPuntos = this.estudiante.PARTICIPACION
         agregarButton.addEventListener("click", (e, ev) => {
             const db = getDatabase();
-           // const estudiantePartRef = ref(db, "estudiantes/" + this.estudiante.CODIGO+"/"+  "PARTICIPACION");//
-           // let participacionPuntos = this.estudiante.PARTICIPACION += 1;//
+           const estudiantePartRef = ref(db, "estudiantes/" + this.estudiante.CODIGO+"/"+  "PARTICIPACION");
+        const participacionPuntos = this.estudiante.PARTICIPACION += 1;
            //console.log("agregados puntos");///        
-          //set(estudiantePartRef, participacionPuntos);//
+          set(estudiantePartRef, participacionPuntos);
 
-          let estudiantePartRef = ref(db, "estudiantes/" + this.estudiante.CODIGO);
-          participacionPuntos++;
+          //let estudiantePartRef = ref(db, "estudiantes/" + this.estudiante.CODIGO);
+         // participacionPuntos++;
 
-            //Show changes
-            participacion.innerHTML =  participacionPuntos;
-            update(estudiantePartRef, {"PARTICIPACION":  participacionPuntos});
+          
+           // participacion.innerHTML =  participacionPuntos;
+            //update(estudiantePartRef, {"PARTICIPACION":  participacionPuntos});
 
         });
 
