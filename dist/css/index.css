@@ -1,0 +1,102 @@
+/*configuracion general */
+#titulo
+{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    align-items: center;
+    justify-content: center;
+    display:flex;
+    flex-direction: column;
+}
+
+#RegisterDiv
+{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    align-items: center;
+    justify-content: center;
+    display:flex;
+    flex-direction: column;
+}
+
+#matricularButton
+{
+    margin: 20px;
+    height: 40px;
+    cursor: pointer;
+    background-color: #5E6472;
+    border: #8ca9df;
+    border-radius: 4px;
+    padding: 10px;
+
+}
+
+#estudianteText
+{
+    margin: 2px; 
+    height: 10px;
+    border: 1px solid #5E6472;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+#codigoText
+{
+    margin: 2px; 
+    height: 10px;
+    border: 1px solid #5E6472;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+#cursoText
+{
+    margin: 2px; 
+    height: 10px;
+    border: 1px solid #5E6472;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+#bonusDiv{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+
+.card{
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #5E6472;
+    color: white;
+    margin: 1px;
+    width: 180px;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+
+}
+
+.eliminarButton
+{
+    align-items: left;
+    width: 60px;
+    margin: 5px;
+    background-color: #FFA69E;
+    color: black;
+    border-radius: 10px;
+    cursor:pointer;
+}
+
+
+.agregarButton
+{
+    width: 60px;
+    margin: 5px;
+    background-color: #FAF3DD;
+    color: black;
+    border-radius: 10px;
+    cursor:pointer;
+}
+
