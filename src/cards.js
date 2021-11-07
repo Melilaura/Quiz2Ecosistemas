@@ -1,37 +1,36 @@
-import { getDatabase, ref, set, onValue, push } from 'firebase/database';
+import { getDatabase, ref, push, set, onValue, update } from 'firebase/database';
 
-export class cards
-{
-    constructor(estudiante)
-    {
+export class cards{
+
+    constructor(estudiante){
+
         this.estudiante = estudiante;
     }
 
-    render()
-    {
+    render() {
 
         //render div de los elementos
         let card = document.createElement("div");
-        card.className = "card";
+        card.className = "card-student";
 
         //nombre del estudiante
         let nombre = document.createElement("p");
-        nombre.className = "nombreText";
+        nombre.className = "nombre-Card";
         nombre.innerHTML = this.estudiante.NOMBRE;
 
         // codigo del estudiante
         let codigo = document.createElement("p");
-        codigo.className = "codigoText";
+        codigo.className = "codigo-Card";
         codigo.innerHTML = this.estudiante.CODIGO;
         
         //curso
         let curso = document.createElement("p");
-        curso.className = "cursoText";
+        curso.className = "curso-Card";
         curso.innerHTML = this.estudiante.CURSO;
 
         //participacion
         let participacion = document.createElement("p");
-        participacion.className = "participacionText";
+        participacion.className = "participacion-Card";
         participacion.innerHTML = this.estudiante.PARTICIPACION;
 
         //BOTONES//
@@ -45,29 +44,34 @@ export class cards
         eliminarButton.addEventListener("click", (e, ev) =>{
 
                         const db = getDatabase();
-                        const dbRef = ref(db, 'estudiantes/' + this.estudiante.CODIGO);
+                        const eliminarRef = ref(db, 'estudiantes/' + this.estudiante.CODIGO);
+                        
+                        set(eliminarRef, null);
                         console.log("se elimino un estudiante");
-                        set(dbRef, null);
         })
 
 
         // agregar puntos
         let agregarButton = document.createElement("button");
+
         agregarButton.className = "agregarButton";
         agregarButton.innerHTML = "+";
 
-       // let participacionPuntos = this.estudiante.PARTICIPACION;
+      let participacionPuntos = this.estudiante.PARTICIPACION
         agregarButton.addEventListener("click", (e, ev) => {
             const db = getDatabase();
-            const dbRef = ref(db, "estudiantes/" + this.estudiante.CODIGO+ "/" + "PARTICIPACION");
-            //console.log(dbRef);
-            const participacionPuntos = this.estudiante.PARTICIPACION += 1;
+           // const estudiantePartRef = ref(db, "estudiantes/" + this.estudiante.CODIGO+"/"+  "PARTICIPACION");//
+           // let participacionPuntos = this.estudiante.PARTICIPACION += 1;//
+           //console.log("agregados puntos");///        
+          //set(estudiantePartRef, participacionPuntos);//
 
-            //participacion.innerHTML = participacionPuntos;
-           // update(dbRef, {"PARTICIPACION": participacionPuntos});
+          let estudiantePartRef = ref(db, "estudiantes/" + this.estudiante.CODIGO);
+          participacionPuntos++;
 
-            //console.log(participacionPuntos);        
-           set(dbRef, participacionPuntos);
+            //Show changes
+            participacion.innerHTML =  participacionPuntos;
+            update(estudiantePartRef, {"PARTICIPACION":  participacionPuntos});
+
         });
 
         

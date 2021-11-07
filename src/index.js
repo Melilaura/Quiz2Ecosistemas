@@ -1,5 +1,5 @@
 import {initializeApp} from "firebase/app";
-import {getDatabase, ref, set, onValue, push} from "firebase/database";
+import {getDatabase, ref, push, set, onValue} from "firebase/database";
 
 import {getFirebaseConfig} from "./firebase-config";
 
@@ -28,23 +28,20 @@ function getEstudiante(){
 
     onValue(dbRef, (snapshot)=>{
         const data = snapshot.val();
-        console.log(data);
-        nuevoEstudiante(data);
+        actualizarEstudiante(data);
     });
 }
 
-getEstudiante();
-
-function nuevoEstudiante(data)
+function actualizarEstudiante(data)
 {
-    if(data)
-    {
+    if(data){
+
         sinBonus.innerHTML = "";
         plataBonus.innerHTML = "";
         oroBonus.innerHTML = "";
         
-        Object.keys(data).forEach((k, index) =>
-        {
+        Object.keys(data).forEach((k, index) => {
+
             const card = new cards(data[k]);
             let participacion = data[k].PARTICIPACION;     
 
@@ -83,13 +80,17 @@ const plataBonus = document.getElementById("plataBonus");
 const oroBonus = document.getElementById("oroBonus");
 
 const guardar = (e, event) =>{
+    //let participacionNum = 0;
+
     const nuevoEstudiante = {
 
+        
         NOMBRE: nombreEstudiante.value,
         CODIGO: codigoEstudiante.value,
         CURSO: cursoEstudiante.value,
         //ESTADO: "sin bonus",
-        PARTICIPACION: 0
+        //PARTICIPACION: participacionNum,
+        PARTICIPACION: 0,
     };
 
     registrarEstudiante(nuevoEstudiante);
@@ -103,4 +104,4 @@ const guardar = (e, event) =>{
 }
 
 matricularButton.addEventListener("click", guardar);
-
+getEstudiante();
